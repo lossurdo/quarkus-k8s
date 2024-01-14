@@ -18,11 +18,19 @@ public class DebugResource {
     @ConfigProperty(name = "quarkus.application.version")
     String quarkusVersion;
 
+    @ConfigProperty(name = "mensagem_configmaps")
+    String mensagemConfigMaps;
+
+    @ConfigProperty(name = "mensagem_secrets")
+    String mensagemSecrets;
+
     @GET
     public Response debug() {
         HashMap<String, String> hm = new HashMap<>();
 
         hm.put("quarkus_version", quarkusVersion);
+        hm.put("mensagem_configmaps", mensagemConfigMaps);
+        hm.put("mensagem_secrets", mensagemSecrets);
 
         return Response.ok(hm).build();
     }

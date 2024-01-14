@@ -12,11 +12,8 @@ import java.util.HashMap;
 
 @RequestScoped
 @Path("/debug")
-@Produces(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 public class DebugResource {
-
-    @ConfigProperty(name = "quarkus.application.version")
-    String quarkusVersion;
 
     @ConfigProperty(name = "mensagem_configmaps")
     String mensagemConfigMaps;
@@ -28,7 +25,6 @@ public class DebugResource {
     public Response debug() {
         HashMap<String, String> hm = new HashMap<>();
 
-        hm.put("quarkus_version", quarkusVersion);
         hm.put("mensagem_configmaps", mensagemConfigMaps);
         hm.put("mensagem_secrets", mensagemSecrets);
 
